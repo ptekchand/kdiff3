@@ -98,3 +98,7 @@ Additional hints
    For more documentation, see the help-menu or the subdirectory doc.
 
    Have fun!
+
+   Building on Windows:
+   - Install Craft: https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source/Windows#Installing_Craft
+   - Run: `craft kdiff3` (in the Craft (PowerShell) environment)
