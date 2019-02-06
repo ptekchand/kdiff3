@@ -101,4 +101,22 @@ Additional hints
 
    Building on Windows:
    - Install Craft: https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source/Windows#Installing_Craft
+     PS> Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+     PS> iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/KDE/craft/master/setup/install_craft.ps1'))
+     # Example location (Replace `D:\Users\UserName\Documents\CraftRoot` with whatever you use):
+     PS> D:\Users\UserName\Documents\CraftRoot\craft\craftenv.ps1
+
+     Following hints/commands are usually meant to run in the Craft (PowerShell) environment
    - Run: `craft kdiff3` (in the Craft (PowerShell) environment)
+
+   - Generate solution to debug using VS2017:
+     # Desired location example
+     PS> cd D:\Users\UserName\Documents\CraftRoot\build\kde\unreleased\kdiff3\vs_sln_dir
+     # The "build\_\73890534\kdiff3" is the location where kdiff3 source got downloaded (and linked)
+     # eg: 73890534 [D:\Users\UserName\Documents\CraftRoot\download\git\kde\unreleased]
+     PS> cmake -G "Visual Studio 15 2017 Win64" -DBUILD_TESTING=ON   -DCMAKE_INSTALL_PREFIX="D:/Users/UserName/Documents/CraftRoot" -DCMAKE_PREFIX_PATH="D:/Users/UserName/Documents/CraftRoot" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_SKIP=ON -DKDE_INSTALL_USE_QT_SYS_PATHS=ON "D:\Users\UserName\Documents\CraftRoot\build\_\73890534\kdiff3"
+
+   - To package:
+      PS> `craft nsis`  # Install dependency
+      PS> craft --package kdiff3
+
